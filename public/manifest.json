@@ -1,0 +1,17 @@
+{
+  "name": "SVG 변환기",
+  "short_name": "SVG 변환기",
+  "description": "PNG와 SVG 이미지를 상호 변환하는 클라이언트 측 도구",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#1e40af",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+} 

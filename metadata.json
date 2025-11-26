@@ -1,0 +1,6 @@
+{
+  "name": "SVG 변환기",
+  "description": "PNG 이미지를 SVG 형식으로, SVG 이미지를 PNG 형식으로 변환하는 클라이언트 측 도구입니다. 파일을 업로드하고 변환된 버전을 즉시 받아보세요.",
+  "requestFramePermissions": [],
+  "prompt": ""
+}

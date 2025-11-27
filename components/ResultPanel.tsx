@@ -4,7 +4,6 @@ import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import Spinner from './Spinner';
 import {
-  Download,
   CheckCircle,
   AlertTriangle,
   X,
@@ -12,6 +11,7 @@ import {
   FileImage,
   FileCode,
   ImageOff,
+  Download,
 } from 'lucide-react';
 import { cn } from '../lib/utils';
 
@@ -86,13 +86,19 @@ const FileListItem: React.FC<{
       <StatusBadge />
 
       {item.status === FileStatus.CONVERTED ? (
-        <Button variant="ghost" size="icon" className="h-8 w-8" asChild>
+        <Button
+          variant="default"
+          size="sm"
+          className="h-8 px-3 text-xs font-medium gap-1.5 bg-primary hover:bg-primary/90 text-primary-foreground shadow-sm"
+          asChild
+        >
           <a href={item.outputPreviewUrl!} download={getDownloadFileName()}>
-            <Download className="w-4 h-4" />
+            <Download className="w-3.5 h-3.5" />
+            다운로드
           </a>
         </Button>
       ) : (
-        <div className="w-8" />
+        <div className="w-20" />
       )}
 
       <Button

@@ -55,7 +55,7 @@ const ActionBar: React.FC<ActionBarProps> = ({
 
         <Button variant="outline" size="sm" onClick={onReset}>
           <Trash2 className="w-4 h-4 mr-1" />
-          모두 지우기
+          새로고침
         </Button>
 
         <Button

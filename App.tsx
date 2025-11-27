@@ -2,7 +2,6 @@ import React, { useState, useCallback, useMemo } from 'react';
 import { AppStatus, ConversionType, ConversionFile, FileStatus } from './types';
 import FileUploader from './components/FileUploader';
 import ResultPanel from './components/ResultPanel';
-import ActionBar from './components/ActionBar';
 import { convertSvgToPng, convertPngToSvg } from './services/conversionService';
 import { Header } from './components/Header';
 import { Sidebar } from './components/Sidebar';
@@ -181,7 +180,16 @@ const App: React.FC = () => {
   return (
     <div className="h-screen flex flex-col bg-background">
       {/* 헤더 */}
-      <Header onToggleSidebar={() => setSidebarOpen(true)} />
+      <Header
+        onToggleSidebar={() => setSidebarOpen(true)}
+        filesCount={files.length}
+        isProcessing={isProcessing}
+        isZipping={isZipping}
+        canConvert={canConvert}
+        onReset={handleReset}
+        onDownloadAll={handleDownloadAll}
+        onConvertAll={handleConvertAll}
+      />
 
       <div className="flex-1 flex overflow-hidden">
         {/* 사이드바 */}
@@ -198,7 +206,12 @@ const App: React.FC = () => {
                   파일 업로드
                 </h2>
                 <div className="flex-1">
-                  <FileUploader onFileSelect={handleFileSelect} error={globalError} />
+                  <FileUploader
+                    onFileSelect={handleFileSelect}
+                    error={globalError}
+                    files={files}
+                    onRemoveFile={handleRemoveFile}
+                  />
                 </div>
               </div>
 
@@ -215,21 +228,6 @@ const App: React.FC = () => {
             </div>
           </main>
 
-          {/* 액션바 (파일이 있을 때만 표시) */}
-          {files.length > 0 && (
-            <ActionBar
-              filesCount={files.length}
-              queuedCount={queuedFilesCount}
-              convertedCount={convertedFilesCount}
-              isProcessing={isProcessing}
-              isZipping={isZipping}
-              canConvert={canConvert}
-              onConvertAll={handleConvertAll}
-              onReset={handleReset}
-              onDownloadAll={handleDownloadAll}
-              onAddMore={handleAddMore}
-            />
-          )}
         </div>
       </div>
     </div>
